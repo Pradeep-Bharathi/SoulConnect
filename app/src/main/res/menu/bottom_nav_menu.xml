@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navHome"
+        android:title="Home" />
+    <item
+        android:id="@+id/navBreath"
+        android:title="Breathing" />
+    <item
+        android:id="@+id/navMusic"
+        android:title="Music" />
+    <item
+        android:id="@+id/navHelp"
+        android:title="Helpline" />
+</menu>
