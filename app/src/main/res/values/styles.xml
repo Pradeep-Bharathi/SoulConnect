@@ -10,4 +10,8 @@
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
+    <style name="NavigationViewStyle">
+        <item name="android:textSize">50sp</item> <!-- Adjust the text size as needed -->
+    </style>
+
 </resources>

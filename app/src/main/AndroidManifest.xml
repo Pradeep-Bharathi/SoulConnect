@@ -4,6 +4,7 @@
 
     <!-- Add the RECORD_AUDIO permission if it's required for your app -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"

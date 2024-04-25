@@ -3,14 +3,18 @@
 
     <item
         android:id="@+id/navHome"
+        android:icon="@drawable/baseline_add_24"
         android:title="Home" />
     <item
         android:id="@+id/navBreath"
+        android:icon="@drawable/baseline_add_24"
         android:title="Breathing" />
     <item
         android:id="@+id/navMusic"
+        android:icon="@drawable/baseline_add_24"
         android:title="Music" />
     <item
         android:id="@+id/navHelp"
+        android:icon="@drawable/baseline_add_24"
         android:title="Helpline" />
 </menu>

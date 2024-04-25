@@ -13,12 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView speechTextView;
     private TextView recordingTextView; // Added recordingTextView
 
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private NavigationView navigationView;
+
     // Define mood quotes
     private final Map<String, List<String>> moodQuotes = new HashMap<>();
 
@@ -43,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize views
         speechTextView = findViewById(R.id.speechTextView);
         Button startListeningButton = findViewById(R.id.startListeningButton);
         recordingTextView = findViewById(R.id.recordingTextView); // Initialize recordingTextView
@@ -89,6 +97,53 @@ public class MainActivity extends AppCompatActivity {
         startListeningButton.setOnClickListener(v -> {
             startListening();
         });
+
+        // Initialize views for side navigation drawer
+        drawerLayout = findViewById(R.id.drawerLayout);
+        navigationView = findViewById(R.id.navigationView);
+
+        // Initialize ActionBarDrawerToggle and set it up
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+        // Enable the back button in the action bar to toggle the drawer
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // Set item click listener for side navigation drawer
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+
+                if (itemId == R.id.navNotes) {
+                    // Load the NotesFragment when "Notes" is clicked
+                    loadFragment(new NotesFragment(), false);
+                    startListeningButton.setVisibility(View.GONE); // Hide startListeningButton for Help
+                    speechTextView.setVisibility(View.GONE); // Hide speechTextView for Help
+                } else if (itemId == R.id.navTouch) {
+                    loadFragment(new RelaxTouchFragment(), false);
+                    startListeningButton.setVisibility(View.GONE); // Hide startListeningButton for Help
+                    speechTextView.setVisibility(View.GONE); // Hide speechTextView for Help
+                } else if (itemId == R.id.navContact) {
+                    loadFragment(new ContactUsFragment(), false);
+                    startListeningButton.setVisibility(View.GONE); // Hide startListeningButton for Help
+                    speechTextView.setVisibility(View.GONE); // Hide speechTextView for Help
+                }
+                // Close the drawer after handling the click
+                drawerLayout.closeDrawers();
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // Toggle the drawer when the hamburger icon in the action bar is clicked
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadFragment(Fragment fragment, boolean isAppInitialized) {

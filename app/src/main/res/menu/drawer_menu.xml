@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navNotes"
+            android:title="Notes" />
+        <item
+            android:id="@+id/navTouch"
+            android:title="SoulTouch" />
+        <item
+            android:id="@+id/navContact"
+            android:title="Contact Us" />
+        <!-- Add more items as needed -->
+    </group>
+
+</menu>

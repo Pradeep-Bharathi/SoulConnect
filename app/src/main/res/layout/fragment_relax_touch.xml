@@ -1,0 +1,40 @@
+<!-- fragment_relax_touch.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- No need for additional UI elements for Relax Touch -->
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="263dp"
+        android:layout_height="91dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="1dp"
+        android:text="SoulTouch"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="@color/black"
+        android:textSize="50dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="-31dp"
+        android:fontFamily="monospace"
+        android:text="Swipe the screen and relax"
+        android:textColor="#495057"
+        android:textSize="20dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/textView3"
+        android:layout_marginTop="17dp"
+        android:background="#f77f00" />
+</RelativeLayout>
